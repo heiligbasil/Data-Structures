@@ -3,10 +3,15 @@ Answer the following questions for each of the data structures you implemented a
 ## Queue
 
 1. What is the runtime complexity of `enqueue`?
+> O(1) because it doesn't need to search and can just perform the action on the item straight away
 
 2. What is the runtime complexity of `dequeue`?
+> O(1) because this is a single operation and the other parts of the list are ignored
 
 3. What is the runtime complexity of `len`?
+> O(1) because the variable is already stored as the size and just needs to retrieve it.<br>
+> If, on the other hand, I hadn't made use of the helper variable to retrieve the size,<br>
+> <emsp>I would have to traverse the whole list counting the nodes, resulting in O(n) 
 
 ## Binary Search Tree
 
