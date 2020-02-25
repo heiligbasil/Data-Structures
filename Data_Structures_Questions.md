@@ -11,7 +11,7 @@ Answer the following questions for each of the data structures you implemented a
 3. What is the runtime complexity of `len`?
 > O(1) because the variable is already stored as the size and just needs to retrieve it.<br>
 > If, on the other hand, I hadn't made use of the helper variable to retrieve the size,<br>
-> <emsp>I would have to traverse the whole list counting the nodes, resulting in O(n) 
+>     I would have to traverse the whole list counting the nodes, resulting in O(n) 
 
 ## Binary Search Tree
 
@@ -36,23 +36,38 @@ Answer the following questions for each of the data structures you implemented a
 ## Doubly Linked List
 
 1. What is the runtime complexity of `ListNode.insert_after`?
+> O(1)
 
 2. What is the runtime complexity of `ListNode.insert_before`?
+> O(1)
 
 3. What is the runtime complexity of `ListNode.delete`?
+> O(1)
 
 4. What is the runtime complexity of `DoublyLinkedList.add_to_head`?
+> O(1)
 
 5. What is the runtime complexity of `DoublyLinkedList.remove_from_head`?
+> O(1)
 
 6. What is the runtime complexity of `DoublyLinkedList.add_to_tail`?
+> O(1)
 
 7. What is the runtime complexity of `DoublyLinkedList.remove_from_tail`?
+> O(1)
 
 8. What is the runtime complexity of `DoublyLinkedList.move_to_front`?
+> O(1)
 
 9. What is the runtime complexity of `DoublyLinkedList.move_to_end`?
+> O(1)
 
 10. What is the runtime complexity of `DoublyLinkedList.delete`?
+> O(1)
 
     a. Compare the runtime of the doubly linked list's `delete` method with the worst-case runtime of the JS `Array.splice` method. Which method generally performs better?
+    > O(1) - same because it is calling the Node delete function
+
+11. What is the runtime complexity of `DoublyLinkedList.get_max`?
+> O(n)
+ 
