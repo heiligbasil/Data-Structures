@@ -63,9 +63,11 @@ class DoublyLinkedList:
         """Removes the List's current head node, making the
         current head's next node the new head of the List.
         Returns the value of the removed Node."""
-        value = self.head.value
-        self.delete(self.head)
-        return value
+        if self.head is not None:
+            value = self.head.value
+            self.delete(self.head)
+            return value
+        return None
 
     def add_to_tail(self, value):
         """Wraps the given value in a ListNode and inserts it
