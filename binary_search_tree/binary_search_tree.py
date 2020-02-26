@@ -6,6 +6,11 @@ from dll_stack import Stack
 
 
 class BinarySearchTree:
+    """Binary Search Tree, is a node-based binary tree data structure which has the following properties: The left
+    subtree of a node contains only nodes with keys lesser than the node’s key. The right subtree of a node contains
+    only nodes with keys greater than the node’s key. The left and right subtree each must also be a binary search
+    tree. There must be no duplicate nodes """
+
     def __init__(self, value):
         self.value = value
         self.left = None
@@ -15,7 +20,27 @@ class BinarySearchTree:
         """Insert the given value into the tree. Insert adds the input value
         to the binary search tree, adhering to the rules of the ordering of
         elements in a binary search tree"""
-        pass
+        print(f'Inserting value {value}')
+        if value < self.value:
+            # Go left, if the value to insert is less than the root
+            if self.left is None:
+                # Create a new node if there isn't one
+                self.left = BinarySearchTree(value)
+                print('left node added')
+            else:
+                # Recursively call this function on the node to the left
+                print('left node traversal...')
+                self.left.insert(value)
+        else:
+            # Go right, if the value to insert is less than or equal to the root
+            if self.right is None:
+                # Create a new node if the right node is nonexistent
+                self.right = BinarySearchTree(value)
+                print('right node added')
+            else:
+                # If it exists, call this function recursively using the node on the right as the perceived root
+                print('right node traversal...')
+                self.right.insert(value)
 
     def contains(self, target):
         """This searches the binary search tree for the input value,
@@ -63,3 +88,12 @@ class BinarySearchTree:
     # Print Post-order recursive DFT
     def post_order_dft(self, node):
         pass
+
+
+bst = BinarySearchTree(10)
+bst.insert(5)
+bst.insert(15)
+bst.insert(4)
+bst.insert(17)
+bst.insert(6)
+bst.insert(13)
