@@ -1,4 +1,5 @@
 import sys
+
 sys.path.append('../queue_and_stack')
 from dll_queue import Queue
 from dll_stack import Stack
@@ -10,22 +11,29 @@ class BinarySearchTree:
         self.left = None
         self.right = None
 
-    # Insert the given value into the tree
     def insert(self, value):
+        """Insert the given value into the tree. Insert adds the input value
+        to the binary search tree, adhering to the rules of the ordering of
+        elements in a binary search tree"""
         pass
 
-    # Return True if the tree contains the value
-    # False if it does not
     def contains(self, target):
+        """This searches the binary search tree for the input value,
+        returning a boolean indicating whether the value exists in the
+        tree or not"""
         pass
 
-    # Return the maximum value found in the tree
     def get_max(self):
+        """This returns the maximum value in the binary search tree"""
         pass
 
-    # Call the function `cb` on the value of each node
-    # You may use a recursive or iterative approach
     def for_each(self, cb):
+        """This performs a traversal of EVERY node in the tree,
+        executing the passed-in callback function on each tree node value.
+        There is a myriad of ways to perform tree traversal;
+        in this case any of them should work.
+        Call the function `cb` on the value of each node.
+        You may use a recursive or an iterative approach"""
         pass
 
     # DAY 2 Project -----------------------
