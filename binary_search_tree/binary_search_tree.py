@@ -48,12 +48,12 @@ class BinarySearchTree:
         elements in a binary search tree"""
         if value < self.value:
             if self.left:
-                self.left.insert(value)
+                self.left.insert_guided_lecture_solution(value)
             else:
                 self.left = BinarySearchTree(value)
         if value >= self.value:
             if self.right:
-                self.right.insert(value)
+                self.right.insert_guided_lecture_solution(value)
             else:
                 self.right = BinarySearchTree(value)
 
@@ -95,12 +95,12 @@ class BinarySearchTree:
             return True
         if self.value > target:
             if self.left:
-                return self.left.contains(target)
+                return self.left.contains_guided_lecture_solution(target)
             else:
                 return False
         if self.value <= target:
             if self.right:
-                return self.right.contains(target)
+                return self.right.contains_guided_lecture_solution(target)
             else:
                 return False
 
@@ -121,7 +121,7 @@ class BinarySearchTree:
         if not self.right:
             return self.value
         else:
-            return self.right.get_max()
+            return self.right.get_max_guided_lecture_solution()
 
     def for_each(self, cb, cb2=lambda x: arr_neg.append(-x)):
         """This performs a traversal of EVERY node in the tree,
@@ -152,9 +152,9 @@ class BinarySearchTree:
         You may use a recursive or an iterative approach"""
         cb(self.value)
         if self.left:
-            self.left.for_each(cb)
+            self.left.for_each_guided_lecture_solution(cb)
         if self.right:
-            self.right.for_each(cb)
+            self.right.for_each_guided_lecture_solution(cb)
 
     # -------------------------------------
     # DAY 2 Project -----------------------
@@ -173,7 +173,17 @@ class BinarySearchTree:
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        pass
+        stack = Stack()
+        stack.push(self)
+        while stack.size > 0:
+            this_node = stack.pop()
+            if this_node is None:
+                continue
+            print(this_node.value)
+            if this_node.right:
+                stack.push(this_node.right)
+            if this_node.left:
+                stack.push(this_node.left)
 
     # STRETCH Goals -------------------------
     # Note: Research may be required
@@ -188,18 +198,19 @@ class BinarySearchTree:
 
 
 bst = BinarySearchTree(10)
-bst.insert(5)
-bst.insert(15)
-bst.insert(4)
-bst.insert(17)
-bst.insert(6)
-bst.insert(13)
-bst.contains(6)
-bst.contains(14)
-bst.get_max()
+bst.insert_guided_lecture_solution(5)
+bst.insert_guided_lecture_solution(15)
+bst.insert_guided_lecture_solution(4)
+bst.insert_guided_lecture_solution(17)
+bst.insert_guided_lecture_solution(6)
+bst.insert_guided_lecture_solution(13)
+# bst.contains(6)
+# bst.contains(14)
+# bst.get_max()
 arr = []
 arr_neg = []
-cby = lambda x: arr.append(x)
-bst.for_each(cby)
-print(arr)
-print(arr_neg)
+# cby = lambda x: arr.append(x)
+# bst.for_each(cby)
+# print(arr)
+# print(arr_neg)
+bst.in_order_print(bst)
