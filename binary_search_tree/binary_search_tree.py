@@ -74,7 +74,15 @@ class BinarySearchTree:
 
     def get_max(self):
         """This returns the maximum value in the binary search tree"""
-        pass
+        print('^^MAX value')
+        if self.right is None:
+            # No more nodes to the right; found the largest value
+            print(f'max value is {self.value}')
+            return self.value
+        else:
+            # Keep traversing the nodes to the right in search of the final one
+            print('traversing to the right...')
+            return self.right.get_max()
 
     def for_each(self, cb):
         """This performs a traversal of EVERY node in the tree,
@@ -123,3 +131,4 @@ bst.insert(6)
 bst.insert(13)
 bst.contains(6)
 bst.contains(14)
+bst.get_max()
