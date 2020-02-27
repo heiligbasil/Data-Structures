@@ -84,7 +84,7 @@ class BinarySearchTree:
             print('traversing to the right...')
             return self.right.get_max()
 
-    def for_each(self, cb):
+    def for_each(self, cb, cb2=lambda x: arr_neg.append(-x)):
         """This performs a traversal of EVERY node in the tree,
         executing the passed-in callback function on each tree node value.
         There is a myriad of ways to perform tree traversal;
@@ -94,14 +94,15 @@ class BinarySearchTree:
         print('xxFOR_EACH')
         # First, put the value of the node into the callback function
         cb(self.value)
+        cb2(self.value)
         if self.left is not None:
             # After the left node is verified to be existing, call this method with the callback
             print('traversing to the left')
-            self.left.for_each(cb)
+            self.left.for_each(cb, cb2)
         if self.right is not None:
             # After the right node is verified to be existing, call this method with the callback
             print('traversing to the right')
-            self.right.for_each(cb)
+            self.right.for_each(cb, cb2)
 
     # DAY 2 Project -----------------------
 
@@ -143,6 +144,8 @@ bst.contains(6)
 bst.contains(14)
 bst.get_max()
 arr = []
+arr_neg = []
 cby = lambda x: arr.append(x)
 bst.for_each(cby)
 print(arr)
+print(arr_neg)
