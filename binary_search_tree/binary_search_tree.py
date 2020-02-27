@@ -42,6 +42,21 @@ class BinarySearchTree:
                 print('right node traversal...')
                 self.right.insert(value)
 
+    def insert_guided_lecture_solution(self, value):
+        """Insert the given value into the tree. Insert adds the input value
+        to the binary search tree, adhering to the rules of the ordering of
+        elements in a binary search tree"""
+        if value < self.value:
+            if self.left:
+                self.left.insert(value)
+            else:
+                self.left = BinarySearchTree(value)
+        if value >= self.value:
+            if self.right:
+                self.right.insert(value)
+            else:
+                self.right = BinarySearchTree(value)
+
     def contains(self, target):
         """This searches the binary search tree for the input value,
         returning a boolean indicating whether the value exists in the
@@ -72,6 +87,23 @@ class BinarySearchTree:
                 # Verified the right node exists; now can call this method on it
                 return self.right.contains(target)
 
+    def contains_guided_lecture_solution(self, target):
+        """This searches the binary search tree for the input value,
+        returning a boolean indicating whether the value exists in the
+        tree or not"""
+        if self.value == target:
+            return True
+        if self.value > target:
+            if self.left:
+                return self.left.contains(target)
+            else:
+                return False
+        if self.value <= target:
+            if self.right:
+                return self.right.contains(target)
+            else:
+                return False
+
     def get_max(self):
         """This returns the maximum value in the binary search tree"""
         print('^^MAX value')
@@ -82,6 +114,13 @@ class BinarySearchTree:
         else:
             # Keep traversing the nodes to the right in search of the final one
             print('traversing to the right...')
+            return self.right.get_max()
+
+    def get_max_guided_lecture_solution(self):
+        """This returns the maximum value in the binary search tree"""
+        if not self.right:
+            return self.value
+        else:
             return self.right.get_max()
 
     def for_each(self, cb, cb2=lambda x: arr_neg.append(-x)):
@@ -104,7 +143,22 @@ class BinarySearchTree:
             print('traversing to the right')
             self.right.for_each(cb, cb2)
 
+    def for_each_guided_lecture_solution(self, cb, cb2=lambda x: arr_neg.append(-x)):
+        """This performs a traversal of EVERY node in the tree,
+        executing the passed-in callback function on each tree node value.
+        There is a myriad of ways to perform tree traversal;
+        in this case any of them should work.
+        Call the function `cb` on the value of each node.
+        You may use a recursive or an iterative approach"""
+        cb(self.value)
+        if self.left:
+            self.left.for_each(cb)
+        if self.right:
+            self.right.for_each(cb)
+
+    # -------------------------------------
     # DAY 2 Project -----------------------
+    # -------------------------------------
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
