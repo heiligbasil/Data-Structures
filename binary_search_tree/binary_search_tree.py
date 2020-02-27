@@ -91,7 +91,17 @@ class BinarySearchTree:
         in this case any of them should work.
         Call the function `cb` on the value of each node.
         You may use a recursive or an iterative approach"""
-        pass
+        print('xxFOR_EACH')
+        # First, put the value of the node into the callback function
+        cb(self.value)
+        if self.left is not None:
+            # After the left node is verified to be existing, call this method with the callback
+            print('traversing to the left')
+            self.left.for_each(cb)
+        if self.right is not None:
+            # After the right node is verified to be existing, call this method with the callback
+            print('traversing to the right')
+            self.right.for_each(cb)
 
     # DAY 2 Project -----------------------
 
@@ -132,3 +142,7 @@ bst.insert(13)
 bst.contains(6)
 bst.contains(14)
 bst.get_max()
+arr = []
+cby = lambda x: arr.append(x)
+bst.for_each(cby)
+print(arr)
