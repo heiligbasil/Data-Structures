@@ -20,7 +20,7 @@ class BinarySearchTree:
         """Insert the given value into the tree. Insert adds the input value
         to the binary search tree, adhering to the rules of the ordering of
         elements in a binary search tree"""
-        print(f'Inserting value {value}')
+        print(f'->INSERTING value {value}')
         if value < self.value:
             # Go left, if the value to insert is less than the root
             if self.left is None:
@@ -46,7 +46,31 @@ class BinarySearchTree:
         """This searches the binary search tree for the input value,
         returning a boolean indicating whether the value exists in the
         tree or not"""
-        pass
+        print(f'00LOOKING for value {target}')
+        if self.value == target:
+            # Found the target value
+            print('found the target')
+            return True
+        elif self.value > target:
+            # Go left if the target is less
+            print('left node traversal...')
+            if self.left is None:
+                # First see if the left node is empty; if not, the target doesn't exist
+                print('target does NOT exist')
+                return False
+            else:
+                # Verified the left node exists; now can call this method on it
+                return self.left.contains(target)
+        else:
+            # Go right when the target is greater than or equal to the value of the current node
+            print('right node traversal...')
+            if self.right is None:
+                # First see if the right node is empty; if not, the target doesn't exist
+                print('target does NOT exist')
+                return False
+            else:
+                # Verified the right node exists; now can call this method on it
+                return self.right.contains(target)
 
     def get_max(self):
         """This returns the maximum value in the binary search tree"""
@@ -97,3 +121,5 @@ bst.insert(4)
 bst.insert(17)
 bst.insert(6)
 bst.insert(13)
+bst.contains(6)
+bst.contains(14)
