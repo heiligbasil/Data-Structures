@@ -163,7 +163,20 @@ class BinarySearchTree:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
+        if not node.left and not node.right:
+            # Print the value when the node is a leaf
+            print(node.value)
+        if node.left:
+            # Traverse left if you can
+            self.in_order_print(node.left)
+            if not node.right:
+                # After returning, print this value to pick up orphan nodes without a right
+                print(node.value)
+        if node.right:
+            # First print the value because the current value should be lower
+            print(node.value)
+            # Then traverse right
+            self.in_order_print(node.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
@@ -174,7 +187,7 @@ class BinarySearchTree:
     # in an iterative depth first traversal
     def dft_print(self, node):
         stack = Stack()
-        stack.push(self)
+        stack.push(node)
         while stack.size > 0:
             this_node = stack.pop()
             if this_node is None:
@@ -196,21 +209,20 @@ class BinarySearchTree:
     def post_order_dft(self, node):
         pass
 
-
-bst = BinarySearchTree(10)
-bst.insert_guided_lecture_solution(5)
-bst.insert_guided_lecture_solution(15)
-bst.insert_guided_lecture_solution(4)
-bst.insert_guided_lecture_solution(17)
-bst.insert_guided_lecture_solution(6)
-bst.insert_guided_lecture_solution(13)
+# bst = BinarySearchTree(10)
+# bst.insert_guided_lecture_solution(5)
+# bst.insert_guided_lecture_solution(15)
+# bst.insert_guided_lecture_solution(4)
+# bst.insert_guided_lecture_solution(17)
+# bst.insert_guided_lecture_solution(6)
+# bst.insert_guided_lecture_solution(13)
 # bst.contains(6)
 # bst.contains(14)
 # bst.get_max()
-arr = []
-arr_neg = []
+# arr = []
+# arr_neg = []
 # cby = lambda x: arr.append(x)
 # bst.for_each(cby)
 # print(arr)
 # print(arr_neg)
-bst.in_order_print(bst)
+# bst.in_order_print(bst)
