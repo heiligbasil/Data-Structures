@@ -1,4 +1,5 @@
 import unittest
+
 from lru_cache import LRUCache
 
 
@@ -31,6 +32,33 @@ class CacheTests(unittest.TestCase):
 
     def test_cache_nonexistent_retrieval(self):
         self.assertIsNone(self.cache.get('nonexistent'))
+
+
+    def test_cache_overwrite_appropriately_gh(self):
+        self.cache.set_guided_lecture_solution('item1', 'a')
+        self.cache.set_guided_lecture_solution('item2', 'b')
+        self.cache.set_guided_lecture_solution('item3', 'c')
+
+        self.cache.set_guided_lecture_solution('item2', 'z')
+
+        self.assertEqual(self.cache.get_guided_lecture_solution('item1'), 'a')
+        self.assertEqual(self.cache.get_guided_lecture_solution('item2'), 'z')
+
+    def test_cache_insertion_and_retrieval_gh(self):
+        self.cache.set_guided_lecture_solution('item1', 'a')
+        self.cache.set_guided_lecture_solution('item2', 'b')
+        self.cache.set_guided_lecture_solution('item3', 'c')
+
+        self.assertEqual(self.cache.get_guided_lecture_solution('item1'), 'a')
+        self.cache.set_guided_lecture_solution('item4', 'd')
+
+        self.assertEqual(self.cache.get_guided_lecture_solution('item1'), 'a')
+        self.assertEqual(self.cache.get_guided_lecture_solution('item3'), 'c')
+        self.assertEqual(self.cache.get_guided_lecture_solution('item4'), 'd')
+        self.assertIsNone(self.cache.get_guided_lecture_solution('item2'))
+
+    def test_cache_nonexistent_retrieval_gh(self):
+        self.assertIsNone(self.cache.get_guided_lecture_solution('nonexistent'))
 
 
 if __name__ == '__main__':
