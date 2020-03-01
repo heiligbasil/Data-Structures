@@ -178,6 +178,17 @@ class BinarySearchTree:
             # Then traverse right
             self.in_order_print(node.right)
 
+    # Print all the values in order from low to high
+    # Hint:  Use a recursive, depth first traversal
+    def in_order_print_after_hours_solution(self, node):
+        # Solution from after hours
+        if node:
+            if self.left:
+                self.left.in_order_print_after_hours_solution(node.left)
+            print(node.value)
+            if self.right:
+                self.right.in_order_print_after_hours_solution(node.right)
+
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
@@ -219,13 +230,14 @@ class BinarySearchTree:
     def post_order_dft(self, node):
         pass
 
-# bst = BinarySearchTree(10)
-# bst.insert_guided_lecture_solution(5)
-# bst.insert_guided_lecture_solution(15)
-# bst.insert_guided_lecture_solution(4)
-# bst.insert_guided_lecture_solution(17)
-# bst.insert_guided_lecture_solution(6)
-# bst.insert_guided_lecture_solution(13)
+
+bst = BinarySearchTree(10)
+bst.insert_guided_lecture_solution(5)
+bst.insert_guided_lecture_solution(15)
+bst.insert_guided_lecture_solution(4)
+bst.insert_guided_lecture_solution(17)
+bst.insert_guided_lecture_solution(6)
+bst.insert_guided_lecture_solution(13)
 # bst.contains(6)
 # bst.contains(14)
 # bst.get_max()
@@ -236,3 +248,4 @@ class BinarySearchTree:
 # print(arr)
 # print(arr_neg)
 # bst.bft_print(bst)
+bst.in_order_print_after_hours_solution(bst)
